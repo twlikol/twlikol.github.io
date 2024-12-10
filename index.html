@@ -4,8 +4,124 @@
 <head>
     <meta charset="utf-8" />
     <title>Likol Lee</title>
+    <link rel="stylesheet" href="fontawesome/css/fontawesome.css" />
+    <link rel="stylesheet" href="fontawesome/css/brands.css" />
+    <link rel="stylesheet" href="fontawesome/css/solid.css" />
+    <link rel="stylesheet" href="fontawesome/css/regular.css" />
+    <link rel="stylesheet" href="style.css" />
+    <style type="text/css">
+        #left {
+            width: 299px;
+            height: 100%;
+            border-right: 1px solid hsl(227, 13%, 79%);
+            display: inline-block;
+            vertical-align: top;
+            background-color: hsl(220, 11%, 95%);
+        }
+
+        #right {
+            width: calc(100% - 300px);
+            height: 100%;
+            display: inline-block;
+            vertical-align: top;
+        }
+
+        #about {
+            text-align: center;
+            padding: 25px 0 15px 0;
+        }
+
+            #about > #avatars {
+                display: flex;
+                align-content: center;
+                justify-content: center;
+            }
+
+                #about > #avatars > #avatar {
+                    width: 100px;
+                    border-radius: 50%;
+                    overflow: hidden;
+                    display: block;
+                }
+
+            #about > #name {
+                font-size: 16px;
+                font-weight: 600;
+                padding: 10px 0 5px 0;
+            }
+
+            #about > #email {
+                font-size: 16px;
+            }
+
+            #about > #avatars > #avatar > img {
+                display: block;
+                width: 100%;
+                aspect-ratio: 1 / 1;
+                object-fit: cover;
+            }
+
+        #top {
+            height: 219px;
+            border-bottom: 1px solid hsl(227, 10%, 90%);
+        }
+
+        #bottom {
+            height: calc(100% - 220px);
+            overflow: auto;
+        }
+
+        #nav {
+            font-size: 14px;
+            padding: 15px;
+            line-height: 30px;
+        }
+
+            #nav > div:hover {
+                background-color: #0366d6;
+                color: #FFFFFF;
+                cursor: pointer;
+            }
+
+            #nav > .main {
+                padding: 0 0 0 10px;
+            }
+
+            #nav > .sub {
+                padding: 0 0 0 35px;
+            }
+    </style>
 </head>
 <body>
-    Likol Lee
+    <div id="left">
+        <div id="top">
+            <div id="about">
+                <div id="avatars">
+                    <div id="avatar">
+                        <img src="imgs/avatar.jpg" alt="Likol Lee">
+                    </div>
+                </div>
+                <div id="name">Likol Lee</div>
+                <div id="email">twlikol@msn.com</div>
+            </div>
+        </div>
+        <div id="bottom">
+            <div id="nav">
+                <div class="main"><i class="fa-regular fa-user"></i> 關於我</div>
+                <div class="main"><i class="fa-regular fa-bookmark"></i> 企業內部系統開發案例</div>
+                <div class="sub"><i class="fa-solid fa-caret-right"></i> Modbus資料收集使用者介面</div>
+                <div class="sub"><i class="fa-solid fa-caret-right"></i> 工作項目管理系統</div>
+                <div class="sub"><i class="fa-solid fa-caret-right"></i> 人員作業工時登錄</div>
+                <div class="main"><i class="fa-brands fa-dev"></i> 系統開發技術資訊</div>
+                <div class="sub"><i class="fa-solid fa-caret-right"></i> 自訂 MSBuild</div>
+                <div class="sub"><i class="fa-solid fa-caret-right"></i> Visual Studio 擴充套件開發</div>
+                <div class="main"><i class="fa-solid fa-layer-group"></i> CANCP 基礎架構開發</div>
+                <div class="sub"><i class="fa-solid fa-caret-right"></i> CANCP是什麼?</div>
+            </div>
+        </div>
+    </div>
+    <div id="right">
+        <span style="font-size:14px;">RIGHT</span>
+    </div>
 </body>
 </html>
