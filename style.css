@@ -8,3 +8,115 @@
     color: #333333;
     background-color: #FFFFFF;
 }
+
+a {
+    color: #0366d6;
+    text-decoration: underline;
+}
+
+a:hover {
+    text-decoration: none;
+}
+
+#left {
+    width: 299px;
+    height: 100%;
+    border-right: 1px solid hsl(227, 13%, 79%);
+    display: inline-block;
+    vertical-align: top;
+    background-color: hsl(220, 11%, 95%);
+}
+
+    #left > #top {
+        height: 219px;
+        border-bottom: 1px solid hsl(227, 10%, 90%);
+    }
+
+    #left > #bottom {
+        height: calc(100% - 220px);
+        overflow: auto;
+    }
+
+#right {
+    width: calc(100% - 300px);
+    height: 100%;
+    display: inline-block;
+    vertical-align: top;
+    background-color: hsl(220, 11%, 95%);
+    overflow: auto;
+}
+    #right > #frame {
+        display: flex;
+        align-content: center;
+        justify-content: center;
+    }
+
+        #right > #frame > #content {
+            font-size: 16px;
+            padding: 0 30px 0 30px;
+            max-width: 800px;
+        }
+            #right > #frame > #content > .title {
+                font-size: 36px;
+                font-weight: 700;
+            }
+
+            #right > #frame > #content > .text {
+                font-size: 18px;
+                line-height: 32px;
+            }
+
+#about {
+    text-align: center;
+    padding: 25px 0 15px 0;
+}
+
+    #about > #avatars {
+        display: flex;
+        align-content: center;
+        justify-content: center;
+    }
+
+        #about > #avatars > #avatar {
+            width: 100px;
+            border-radius: 50%;
+            overflow: hidden;
+            display: block;
+        }
+
+            #about > #avatars > #avatar > img {
+                display: block;
+                width: 100%;
+                aspect-ratio: 1 / 1;
+                object-fit: cover;
+            }
+
+    #about > #name {
+        font-size: 16px;
+        font-weight: 600;
+        padding: 10px 0 5px 0;
+    }
+
+    #about > #email {
+        font-size: 16px;
+    }
+
+#nav {
+    font-size: 14px;
+    padding: 15px;
+    line-height: 30px;
+}
+
+    #nav > div:hover {
+        background-color: #0366d6;
+        color: #FFFFFF;
+        cursor: pointer;
+    }
+
+    #nav > .main {
+        padding: 0 0 0 10px;
+    }
+
+    #nav > .sub {
+        padding: 0 0 0 35px;
+    }
