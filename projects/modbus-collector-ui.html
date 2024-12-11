@@ -18,10 +18,10 @@
         gtag('config', 'G-F5Q6MWC1HT');
     </script>
     
-    <title>Likol Lee - Modbus資料收集與查詢介面</title>
-    <meta name="description" content="Likol Lee 網站、企業資訊系統開發、系統開發技術、CANCP、C#、.NET、ASP.NET Core" />
-    <meta name="keywords" content="likollee, Likol Lee, 企業資訊系統開發, 系統開發技術, CANCP, C#, .NET, ASP.NET CORE" />
-    <meta property="og:title" content="Likol Lee - Modbus資料收集與查詢介面" />
+    <title>Likol Lee - 機台加工數據收集與儀表板</title>
+    <meta name="description" content="使用Modbus連結PLC收集機台在加工過程的各項參數或狀態，將數據轉化為儀表板或圖表資訊，讓管理人員可即時了解生產狀態，提供後續決策的重要資訊來源。" />
+    <meta name="keywords" content="PLC, Modbus, likollee, Likol Lee, 企業資訊系統開發, 系統開發技術, CANCP, C#, .NET, ASP.NET CORE" />
+    <meta property="og:title" content="Likol Lee - 機台加工數據收集與儀表板" />
     <meta property="og:image" content="https://twlikol.github.io/imgs/avatar.jpg" />
     <meta property="og:url" content="https://twlikol.github.io" />
     
@@ -42,8 +42,8 @@
         <div id="bottom">
             <div id="nav">
                 <a class="main link" href="../index.html"><i class="fa-regular fa-user"></i> 關於我</a>
-                <div class="main"><i class="fa-regular fa-bookmark"></i> 企業資訊系統開發案例</div>
-                <a class="sub link" href="modbus-collector-ui.html"><i class="fa-solid fa-caret-right"></i> Modbus資料收集與查詢介面</a>
+                <div class="main"><i class="fa-regular fa-bookmark"></i> 企業資訊系統開發</div>
+                <a class="sub link" href="modbus-collector-ui.html"><i class="fa-solid fa-caret-right"></i> 機台加工數據收集與儀表板</a>
                 <a class="sub link" href="task-management-system.html"><i class="fa-solid fa-caret-right"></i> 工作項目管理系統</a>
                 <a class="sub link" href="user-operation-time-register.html"><i class="fa-solid fa-caret-right"></i> 人員作業工時登錄</a>
                 <div class="main"><i class="fa-brands fa-dev"></i> 系統開發技術</div>
@@ -57,9 +57,20 @@
     <div id="right">
         <div id="frame">
             <div id="content">
-                <p class="title">Modbus資料收集與查詢介面</p>
+                <p class="title">機台加工數據收集與儀表板</p>
                 
-        <div style="padding:0 0 80px 0;">內容還在撰寫中..........</div>
+                <p class="text" style="font-weight:600;">使用Modbus連結PLC收集機台在加工過程的各項參數或狀態，將數據轉化為儀表板或圖表資訊，讓管理人員可即時了解生產狀態，作為後續生產調整決策的重要資訊來源。</p>
+                <p class="text">[圖片(待上傳)]</p>
+                <p class="text">首頁的儀表板顯示每個機台的統計資料，並且在背景作業中持續接收數據，即時依據機台的狀態進行儀表板資訊更新，讓管理者可隨時掌握加工狀態。</p>
+                <p class="text">加工過程中收集的數據除了可以進行查詢，也透過視覺化的圖形，讓管理人員更容易看出加工上的問題，找出對應的解決方式。</p>
+                <p class="text">[圖片(待上傳)]</p>
+                <p class="text">圖形的整體長度表示加工的時間，藍色的部分表示正常、黃色的表示嘗試加工與紅色表示停機，依據顏色的長度可以很容易的觀察到整體加工的情況。</p>
+                <p class="text">除了數據收集，系統中也包含了監控機制，可針對所有機台或是單一機台進行指標的監測，依據設定的規則顯示警示。</p>
+                <p class="text">[圖片(待上傳)]</p>
+                <p class="text" style="font-size:22px;font-weight:600;">系統開發過程</p>
+                <p class="text">當時正在執行另一個專案的開發，在需求溝通與開發的過程中，客戶提到另一個部門也有類似使用PLC作為自動化控制的加工機台，而廠內的ERP系統雖然也有收集數據的功能，但主要是作為加工結果的數據彙總，沒有辦法可以很快速的取得即時的資訊。</p>
+                <p class="text">經過確認也獲得客戶的同意後，使用同樣的架構用來作為該專案的開發基礎，很快的就依據需求將此系統上線，</p>
+                <p class="text">客戶在上線後獲得了不錯的成效後，就不斷的提出一些新功能的想法，希望可以整合更多的資訊(ERP)在系統中，高階主管也提出希望手機也可以使用。因此也持續地針對此系統進行調整與改善。</p>
     
             </div>
         </div>
