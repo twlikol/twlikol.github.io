@@ -187,6 +187,12 @@ a:hover {
         height: auto;
     }
 
+    #nav {
+        font-size: 20px;
+        padding: 15px;
+        line-height: 30px;
+    }
+
     #right > #frame > #content > .images > .col33 {
         width: 50%;
         display: inline-block;
