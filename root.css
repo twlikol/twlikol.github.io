@@ -57,7 +57,6 @@ a:hover {
     }
 
         #right > #frame > #content {
-            font-size: 16px;
             padding: 0 30px 30px 30px;
             max-width: 800px;
         }
@@ -70,6 +69,36 @@ a:hover {
                 font-size: 18px;
                 line-height: 32px;
             }
+
+            #right > #frame > #content > .image {
+                width: 100%;
+                border: 4px solid #CCCCCC;
+            }
+
+                #right > #frame > #content > .image img {
+                    width: 100%;
+                    display: block;
+                }
+
+            #right > #frame > #content > .images {
+                width: 100%;
+            }
+
+                #right > #frame > #content > .images > .col33 {
+                    width: 33%;
+                    display: inline-block;
+                }
+
+                    #right > #frame > #content > .images > .col33 > div {
+                        border: 4px solid #CCCCCC;
+                        margin: 5px;
+                    }
+
+                    #right > #frame > #content > .images > .col33 img {
+                        width: 100%;
+                        display: block;
+                    }
+            
 
 #about {
     text-align: center;
@@ -156,6 +185,11 @@ a:hover {
 
     #left > #bottom {
         height: auto;
+    }
+
+    #right > #frame > #content > .images > .col33 {
+        width: 50%;
+        display: inline-block;
     }
 }
 
