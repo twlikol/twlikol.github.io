@@ -17,15 +17,15 @@
 
         gtag('config', 'G-F5Q6MWC1HT');
     </script>
-    
-    <title>機台加工登錄工作站 - Likol Lee</title>
-    <meta name="description" content="" />
-    <meta name="keywords" content="PLC, Modbus, likollee, Likol Lee, 企業資訊系統開發, 系統開發技術, CANCP, C#, .NET, ASP.NET CORE" />
+    <title>加工作業登錄工作站 - Likol Lee</title>
+    <meta property="og:title" content="加工作業登錄工作站 - Likol Lee" />
+    <meta name="description" content="在加工現場提供可觸控的電腦工作站，透過條碼與作業人員識別卡進行加工登錄，讓較不熟悉電腦操作的現場人員，不須透過滑鼠與鍵盤即可進行資料輸入。" />
+    <meta property="og:description" content="在加工現場提供可觸控的電腦工作站，透過條碼與作業人員識別卡進行加工登錄，讓較不熟悉電腦操作的現場人員，不須透過滑鼠與鍵盤即可進行資料輸入。" />
     <meta property="og:url" content="https://twlikol.github.io/projects/process-register-station.html" />
-    <meta property="og:title" content="機台加工登錄工作站 - Likol Lee" />
-    <meta property="og:description" content="" />
-    <meta property="og:image" content="https://twlikol.github.io/imgs/projects/user-operation-time-register.jpg" />
-    <meta property="og:image:alt" content="機台加工登錄首頁" />
+    
+    <meta name="keywords" content="PLC, Modbus, likollee, Likol Lee, 企業資訊系統開發, 系統開發技術, CANCP, C#, .NET, ASP.NET CORE" />
+    <meta property="og:image" content="https://twlikol.github.io/imgs/projects/process-register-station-1.jpg" />
+    <meta property="og:image:alt" content="加工作業登錄工作站" />
     
 </head>
 <body>
@@ -46,7 +46,7 @@
                 <a class="main link" href="../index.html"><i class="fa-regular fa-user"></i> 關於我</a>
                 <div class="main"><i class="fa-regular fa-bookmark"></i> 企業資訊系統開發</div>
                 <a class="sub link" href="modbus-collector-ui.html"><i class="fa-solid fa-caret-right"></i> 機台加工數據收集與儀表板</a>
-                <a class="sub link" href="process-register-station.html"><i class="fa-solid fa-caret-right"></i> 機台加工登錄工作站</a>
+                <a class="sub link" href="process-register-station.html"><i class="fa-solid fa-caret-right"></i> 加工作業登錄工作站</a>
                 <div class="main"><i class="fa-solid fa-layer-group"></i> CANCP 基礎架構開發</div>
                 <a class="sub link" href="#"><i class="fa-solid fa-caret-right"></i> CANCP是什麼?</a>
             </div>
@@ -55,9 +55,55 @@
     <div id="right">
         <div id="frame">
             <div id="content">
-                <p class="title">機台加工登錄工作站</p>
+                <p class="title">加工作業登錄工作站</p>
+                <p class="description">在加工現場提供可觸控的電腦工作站，透過條碼與作業人員識別卡進行加工登錄，讓較不熟悉電腦操作的現場人員，不須透過滑鼠與鍵盤即可進行資料輸入。</p>
                 
-                <p class="text">內容撰寫中...</p>
+                <p class="image">
+                    <a target="_blank" href="../imgs/projects/process-register-station-1.jpg"><img src="../imgs/projects/process-register-station-1.jpg" /></a>
+                </p>
+                <p class="text">主畫面包含了現場人員日常作業所需功能，使用觸控即可快速進行動作。介面上方則提供的兩種語系切換，另外則為當管理者或系統維護人員需要進行問題排除的解除畫面鎖定功能，</p>
+                <div class="images">
+                    <div class="col col50">
+                        <div>
+                            <a target="_blank" href="../imgs/projects/process-register-station-2.jpg"><img src="../imgs/projects/process-register-station-2.jpg" /></a>
+                        </div>
+                    </div>
+                    <div class="col col50">
+                        <div>
+                            <a target="_blank" href="../imgs/projects/process-register-station-3.jpg"><img src="../imgs/projects/process-register-station-3.jpg" /></a>
+                        </div>
+                    </div>
+                    <div class="col col50">
+                        <div>
+                            <a target="_blank" href="../imgs/projects/process-register-station-4.jpg"><img src="../imgs/projects/process-register-station-4.jpg" /></a>
+                        </div>
+                    </div>
+                    <div class="col col50">
+                        <div>
+                            <a target="_blank" href="../imgs/projects/process-register-station-5.jpg"><img src="../imgs/projects/process-register-station-5.jpg" /></a>
+                        </div>
+                    </div>
+                </div>
+                <p class="text">每一項作業依據SOP不同，會提示作業人員需要進行條碼輸入、刷識別證或點選觸控螢幕項目。</p>
+                <p class="subtitle">系統架構與設計</p>
+                <p class="text">為了提供良好的操作體驗，另一方面也想要可以使用易於排版HTML語法進行畫面設計，採取了以下的架構：</p>
+                <ul class="text">
+                    <li><b>工作站應用程式</b> - 使用WPF+WebView2進行Windows程式開發，WPF用來處理使用者操作、條碼與識別卡資料讀取，操作介面則用內嵌於WPF中的WebView2讀取後端網站提供的內容</li>
+                    <li><b>後端網站</b> - 除了作為管理者資料管理分析介面外，在特定路徑增加了工作站操作所需的使用者介面內容</li>
+                </ul>
+                <p class="text">每一項作業的內容對應至後端網站的特定網址，使用者在操作時使用Javascript進行畫面控制，當需要進行資料輸入時，會使用Javascript與WebView2進行溝通，藉以啟動於WPF開發的資料輸入功能。</p>
+                <div class="images">
+                    <div class="col col50">
+                        <div>
+                            <a target="_blank" href="../imgs/projects/process-register-station-6.jpg"><img src="../imgs/projects/process-register-station-6.jpg" /></a>
+                        </div>
+                    </div>
+                    <div class="col col50">
+                        <div>
+                            <a target="_blank" href="../imgs/projects/process-register-station-7.jpg"><img src="../imgs/projects/process-register-station-7.jpg" /></a>
+                        </div>
+                    </div>
+                </div>
     
             </div>
         </div>
