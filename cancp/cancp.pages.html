@@ -1,0 +1,33 @@
+﻿<PAGE>
+    <FILENAME>what-is-cancp.html</FILENAME>
+    <METAS>
+    <meta name="keywords" content="CANCP, likollee, Likol Lee, 企業資訊系統開發, 系統開發技術, C#, .NET, ASP.NET CORE" />
+    <meta property="og:image" content="https://twlikol.github.io/imgs/projects/what-is-cancp-1.jpg" />
+    <meta property="og:image:alt" content="加工狀態儀表板" />
+    </METAS>
+    <TITLE>CANCP是什麼？</TITLE>
+    <DESCRIPTION>使用ASP.NET Core開發的網站基礎框架，全名為：CITUO ASP.NET Core Platform，是一個以載入NuGet套件(.nupkg)作為功能來源的架構。</DESCRIPTION>
+    <CONTENT>
+                <p class="text">任何程式開發都希望可以更快的完成目標，因此都會一直在尋找程式碼重複利用的作法，除了可以縮短開發時間外，更可以降低需要維護的程式碼數量。如果就Microsoft所提出的網頁開發技術，可以使用以下的作法：</p>
+                <ul class="text">
+                    <li><b>ASP</b> - 透過 #include 語法來載入其他.asp檔案</li>
+                    <li><b>ASP.NET</b> - 建立使用者控制項(UserControl)或伺服器控制項(WebControl)</li>
+                    <li><b>ASP.NET Core</b> - Razor View</li>
+                </ul>
+                <p class="text">上述的部分僅是針對網頁構成的部分內容進行重複利用，如果將層次往上提升，A專案已經開發完成的使用者基本資料維護介面，B專案剛好也需要同樣或接近8成的功能一樣時，有什麼樣的方式可以重複利用呢？</p>
+                <p class="subtitle">使用ASP.NET開發時期</p>
+                <p class="text">ASP.NET基本的運作方式是建立一個副檔案名為.aspx與.aspx.cs的檔案，建置佈署時是將.asp.cs編譯成.dll並複製到伺服器的應用程式bin目錄中，而.aspx則根據目錄結構複製至伺服器的應用程式根目錄，當瀏覽至該檔案對應的網址時即會執行並傳回產生的HTML。</p>
+                <p class="text">從上述的概念可以得到一個做法是，將開發好的功能集合(包含.dll與.aspx)包裝為一個壓縮檔案(.zip)，再透過上傳的方式將內容解壓縮至對應的路徑即可。</p>
+                <p class="image">
+                    <IMAGE>~/imgs/projects/what-is-cancp-1.jpg</IMAGE>
+                </p>
+                <p class="text">為了在開發階段的便利性，首先定義了一個XML檔案作為套件內容的定義檔案(.webfeature)，另外開發了一個Visual Studio套件來進行定義檔的編輯動作，開發人員可以直接在Visual Studio中維護檔案內容。而專案建置動作也做了部分MSBuild的客製，增加了一些工作依據套件定義檔的內容產生套件檔案。</p>
+                <p class="image">
+                    <IMAGE>~/imgs/projects/what-is-cancp-2.jpg</IMAGE>
+                </p>
+                <p class="text">在系統的使用者介面上開發了用來上傳與管理定義檔的功能，除了在上傳時處理檔案的佈署動作，也可以記錄更新過程中的作業資訊。</p>
+                <p class="subtitle">CANCP (CITUO ASP.NET Core Platform)</p>
+                <p class="text">ASP.NET Core運作的方式已經與ASP.NET有了極大的不同，是透過路由(Route)來比對HTTP要求要分派的執行端點，而且每個頁面的內容都會經過編譯，已經無法沿用在ASP.NET使用的做法來進行佈署。</p>
+                <p class="text">在研究探索ASP.NET Core的運作過程中，發現了有類似的作法可以將組件(.dll)編譯的內容掛載到執行階段中，經過不斷的測試與驗證後，也認為此方法可實現以套件方式載入功能的作法，因此就開始此架構的開發作業。</p>
+    </CONTENT>
+</PAGE>

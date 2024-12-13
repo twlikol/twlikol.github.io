@@ -15,7 +15,7 @@ html, body {
 }
 
 a {
-    color: #0366d6;
+    color: #666666;
     text-decoration: underline;
 }
 
@@ -166,7 +166,7 @@ a:hover {
     line-height: 35px;
 }
     #nav > .link {
-        color: #666666 !important;
+        color: #333333 !important;
         cursor: pointer;
         display: block;
         text-decoration: none;
