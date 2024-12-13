@@ -192,6 +192,10 @@ a:hover {
         color: #666666 !important;
     }
 
+#gototop {
+    display: none;
+}
+
 @media screen and (max-width : 700px) {
     #left {
         width: 100%;
@@ -235,6 +239,10 @@ a:hover {
 
     #right > #frame > #content > .images > .col50 {
         width: 100%;
+        display: block;
+    }
+
+    #gototop {
         display: block;
     }
 }
