@@ -170,6 +170,7 @@ a:hover {
         cursor: pointer;
         display: block;
         text-decoration: none;
+        font-weight: 600;
     }
 
         #nav > .link:hover {
@@ -178,14 +179,17 @@ a:hover {
             cursor: pointer;
             display: block;
             text-decoration: none;
+            font-weight: 600;
         }
 
     #nav > .main {
         padding: 0 0 0 10px;
+        color: #666666 !important;
     }
 
     #nav > .sub {
         padding: 0 0 0 35px;
+        color: #666666 !important;
     }
 
 @media screen and (max-width : 700px) {
