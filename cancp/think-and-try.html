@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="language" content="tw" />
+    <meta property="og:site_name" content="Likol Lee" />
+    <meta property="og:type" content="article" />
+    <link rel="stylesheet" href="ref.css" />
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-F5Q6MWC1HT"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-F5Q6MWC1HT');
+    </script>
+    <title>構思與初步驗證 - Likol Lee</title>
+    <meta property="og:title" content="構思與初步驗證 - Likol Lee" />
+    <meta name="description" content="" />
+    <meta property="og:description" content="" />
+    <meta property="og:url" content="https://twlikol.github.io/cancp/think-and-try.html" />
+    
+    <meta name="keywords" content="CANCP, SharePoint, likollee, Likol Lee, 企業資訊系統開發, 系統開發技術, C#, .NET, ASP.NET CORE" />
+    <meta property="og:image" content="" />
+    <meta property="og:image:alt" content="" />
+    
+</head>
+<body>
+    <a id="top"></a>
+    <div id="left">
+        <div id="top">
+            <div id="about">
+                <div id="avatars">
+                    <div id="avatar">
+                        <img src="../imgs/avatar.jpg" alt="Likol Lee">
+                    </div>
+                </div>
+                <div id="name">Likol Lee</div>
+                <div id="email"><a href="mailto:twlikol@msn.com">twlikol@msn.com</a></div>
+            </div>
+        </div>
+        <div id="bottom">
+            <div id="latestupdate">最後更新時間: 2024-12-15 01:38:10</div>
+            <div id="nav">
+                <a class="main link" href="../index.html"><i class="fa-regular fa-user"></i> 關於我</a>
+                <div class="main"><i class="fa-regular fa-bookmark"></i> 企業資訊系統開發</div>
+                <a class="sub link" href="../projects/modbus-collector-ui.html#article"><i class="fa-solid fa-caret-right"></i> 機台加工數據收集與儀表板</a>
+                <a class="sub link" href="../projects/process-register-station.html#article"><i class="fa-solid fa-caret-right"></i> 加工作業登錄工作站</a>
+                <div class="main"><i class="fa-solid fa-layer-group"></i> CANCP 基礎架構開發</div>
+                <a class="sub link" href="what-is-cancp.html#article"><i class="fa-solid fa-caret-right"></i> CANCP是什麼？</a>
+                <a class="sub link" href="think-and-try.html#article"><i class="fa-solid fa-caret-right"></i> 構思與初步驗證</a>
+            </div>
+        </div>
+    </div>
+    <div id="right">
+        <div id="frame">
+            <div id="content">
+                <a id="article"></a>
+                <p class="title">構思與初步驗證</p>
+                <p class="description"></p>
+                
+                <p class="subtitle">構想來源</p>
+                <p class="text">這樣的架構其實是來自於Microsoft的產品"SharePoint"，除了可以使用官方提供的專屬軟體直接進行客製化，官方也在Visual Studio中開發了延伸套件，讓開發人員可以更深層的進行客製化，使用Visual Studio所開發的客製化功能，就是使用套件方式進行佈署。</p>
+                <p class="subtitle">找出方法</p>
+                <p class="text">在.NET Core剛推出時，由於已經在ASP.NET上實現了這樣的架構，因此並沒有立即就針對.NET Core的版本進行開發，一直到了.NET Core 3.0版本推出才決定要在.NET Core實現這樣的作法。</p>
+                <p class="text">一開始就意識到由於ASP.NET與ASP.NET Core已經是完全不同的架構，在ASP.NET的實作方式已經無法使用，過程中只能不斷的深入探索ASP.NET Core的運作方式，藉以找出可實現的方式。</p>
+                <p class="text">終於當越來越了解運作原理後，從ASP.NET Core Identity UI功能找到了可以從外部組件載入頁面功能的正確做法，但卻發現了一個實現這項架構的更大困難。</p>
+                <p class="subtitle">深入問題</p>
+                <p class="text">問題在於使用.NET Core開發的程式都會產生一個.deps.json檔案，檔案會紀錄程式啟動時需要載入的組件資訊，開發階段加入參考的組件自動就會產生相關資訊。而要達到使用套件方式載入功能的架構，可能會因為需要載入的套件有額外參考其他組件，但額外參考的組件資訊並沒有包含在啟動的.deps.json中，因此造成無法運作。當然更不可能將所有可能用到的組件都在開發階段就加入啟動專案的參考中，這樣就完全破壞了這種架構的意義，</p>
+                <p class="text">經過不斷的嘗試與查看GitHub中.NET Core的程式碼，意外的發現有一個類別名稱"DependencyContext"是用來讀取這個檔案的，也提供一個方法稱為"Merge"可以合併不同的.deps.json，這樣一來就提供了要實現這個架構的基礎作法。</p>
+    
+                <div id="gototop">
+                    <a href="#top">
+                        <i class="fa-regular fa-circle-up fa-xl"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
