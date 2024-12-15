@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="language" content="tw" />
+    <meta property="og:site_name" content="Likol Lee" />
+    <meta property="og:type" content="article" />
+    <link rel="stylesheet" href="ref.css" />
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-F5Q6MWC1HT"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-F5Q6MWC1HT');
+    </script>
+    <title>使用NuGet套件作為佈署格式 - Likol Lee</title>
+    <meta property="og:title" content="使用NuGet套件作為佈署格式 - Likol Lee" />
+    <meta name="description" content="除了開發階段容易重複使用其功能，也能有效的管理其版本與相依性問題，更可以架設一個私有的NuGet Server作為內部用來佈署的套件來源。" />
+    <meta property="og:description" content="除了開發階段容易重複使用其功能，也能有效的管理其版本與相依性問題，更可以架設一個私有的NuGet Server作為內部用來佈署的套件來源。" />
+    <meta property="og:url" content="https://twlikol.github.io/cancp/use-nuget-package-format.html" />
+    
+    <meta name="keywords" content="NuGet, CANCP, likollee, Likol Lee, 企業資訊系統開發, 系統開發技術, C#, .NET, ASP.NET CORE" />
+    <meta property="og:image" content="" />
+    <meta property="og:image:alt" content="" />
+    
+</head>
+<body>
+    <a id="top"></a>
+    <div id="left">
+        <div id="top">
+            <div id="about">
+                <div id="avatars">
+                    <div id="avatar">
+                        <img src="../imgs/avatar.jpg" alt="Likol Lee">
+                    </div>
+                </div>
+                <div id="name">Likol Lee</div>
+                <div id="email"><a href="mailto:twlikol@msn.com">twlikol@msn.com</a></div>
+            </div>
+        </div>
+        <div id="bottom">
+            <div id="latestupdate">最後更新時間: 2024-12-16 00:25:08</div>
+            <div id="nav">
+                <a class="main link" href="../index.html"><i class="fa-regular fa-user"></i> 關於我</a>
+                <div class="main"><i class="fa-regular fa-bookmark"></i> 企業資訊系統開發</div>
+                <a class="sub link" href="../projects/modbus-collector-ui.html#article"><i class="fa-solid fa-caret-right"></i> 機台加工數據收集與儀表板</a>
+                <a class="sub link" href="../projects/process-register-station.html#article"><i class="fa-solid fa-caret-right"></i> 加工作業登錄工作站</a>
+                <div class="main"><i class="fa-solid fa-layer-group"></i> CANCP 基礎架構開發</div>
+                <a class="sub link" href="what-is-cancp.html#article"><i class="fa-solid fa-caret-right"></i> CANCP是什麼？</a>
+                <a class="sub link" href="think-and-try.html#article"><i class="fa-solid fa-caret-right"></i> 構思與初步驗證</a>
+                <a class="sub link" href="use-nuget-package-format.html#article"><i class="fa-solid fa-caret-right"></i> 使用NuGet套件作為佈署格式</a>
+            </div>
+        </div>
+    </div>
+    <div id="right">
+        <div id="frame">
+            <div id="content">
+                <a id="article"></a>
+                <p class="title">使用NuGet套件作為佈署格式</p>
+                <p class="description">除了開發階段容易重複使用其功能，也能有效的管理其版本與相依性問題，更可以架設一個私有的NuGet Server作為內部用來佈署的套件來源。</p>
+                
+                <p class="text">當開發階段需要使用到套件包含的的功能，通常就是要將套件中的組件加入參考，但如果套件是使用zip格式進行封裝，並沒有辦法可以有效的使用，只有將全部套件內容放置於約定共用目錄中，才可以讓開發階段參考使用，這樣的作法其實在開發階段會引起不少的副作用。</p>
+                <p class="text">架構開發的過程中，意識到其實.NET Core中有很多功能或做法都是依賴著NuGet套件，如果用來佈署的套件格式也使用這種格式，其實就直接解決了開發階段的問題，而額外需要做的只是架設一個私有的NuGet Server。</p>
+                <p class="subtitle">實作方式</p>
+                <p class="text">為了可以在開發階段進行參考，因此格式與內容基本上與NuGet套件是一致的，不一樣的部分是加入了一個名為"platform"的目錄，並在這個目錄中加入了一個名為app.manifest的檔案，這個檔案紀錄了此套件載入時的相關資訊。</p>
+                <p class="text">原本的套件來源是應用程式中的Packages目錄，系統啟動時會使用這個目錄中的.nupkg進行載入作業，但後來在內部專案開發時想到，如果可以直接指定使用NuGet Server的套件作為來源，這樣在測試上或是發布新版本給客戶端應該可以做一些控制或稽核的流程，因此就將這種載入的方式也加入到實作中。</p>
+    
+                <div id="gototop">
+                    <a href="#top">
+                        <i class="fa-regular fa-circle-up fa-xl"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

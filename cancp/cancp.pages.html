@@ -46,9 +46,27 @@
                 <p class="subtitle">找出方法</p>
                 <p class="text">在.NET Core剛推出時，由於已經在ASP.NET上實現了這樣的架構，因此並沒有立即就針對.NET Core的版本進行開發，一直到了.NET Core 3.0版本推出才決定要在.NET Core實現這樣的作法。</p>
                 <p class="text">一開始就意識到由於ASP.NET與ASP.NET Core已經是完全不同的架構，在ASP.NET的實作方式已經無法使用，過程中只能不斷的深入探索ASP.NET Core的運作方式，藉以找出可實現的方式。</p>
-                <p class="text">終於當越來越了解運作原理後，從ASP.NET Core Identity UI功能找到了可以從外部組件載入頁面功能的正確做法，但卻發現了一個實現這項架構的更大困難。</p>
+                <p class="text">終於當越來越了解運作原理後，從ASP.NET Core Identity UI功能找到了可以從外部組件載入頁面功能的正確做法，但卻發現了一個實現這項架構的更大挑戰。</p>
                 <p class="subtitle">深入問題</p>
                 <p class="text">問題在於使用.NET Core開發的程式都會產生一個.deps.json檔案，檔案會紀錄程式啟動時需要載入的組件資訊，開發階段加入參考的組件自動就會產生相關資訊。而要達到使用套件方式載入功能的架構，可能會因為需要載入的套件有額外參考其他組件，但額外參考的組件資訊並沒有包含在啟動的.deps.json中，因此造成無法運作。當然更不可能將所有可能用到的組件都在開發階段就加入啟動專案的參考中，這樣就完全破壞了這種架構的意義，</p>
-                <p class="text">經過不斷的嘗試與查看GitHub中.NET Core的程式碼，意外的發現有一個類別名稱"DependencyContext"是用來讀取這個檔案的，也提供一個方法稱為"Merge"可以合併不同的.deps.json，這樣一來就提供了要實現這個架構的基礎作法。</p>
+                <p class="text">經過不斷的嘗試與查看GitHub中.NET Core的程式碼，意外的發現有一個類別名稱"DependencyContext"是用來讀取這個檔案的，它也提供一個方法稱為"Merge"可以合併不同的.deps.json，這樣就可以處理執行階段啟動時載入套件的依據。</p>
+                <p class="text">另一個問題則是找出專案建置時是如何輸出.deps.json，因為必須在建置階段將參考的組件檔案加入到套件的內容中。這個部分應該是需要從.NET Core SDK進行下手，找出專案的建置過程(MSBuild)是哪個部分輸出這個檔案的內容，觀察整合專案建置詳細紀錄後發現，"ReferencesCopiedInThisBuild"變數應該就是要找的目標。</p>
+    </CONTENT>
+</PAGE>
+<PAGE>
+    <FILENAME>use-nuget-package-format.html</FILENAME>
+    <METAS>
+    <meta name="keywords" content="NuGet, CANCP, likollee, Likol Lee, 企業資訊系統開發, 系統開發技術, C#, .NET, ASP.NET CORE" />
+    <meta property="og:image" content="" />
+    <meta property="og:image:alt" content="" />
+    </METAS>
+    <TITLE>使用NuGet套件作為佈署格式</TITLE>
+    <DESCRIPTION>除了開發階段容易重複使用其功能，也能有效的管理其版本與相依性問題，更可以架設一個私有的NuGet Server作為內部用來佈署的套件來源。</DESCRIPTION>
+    <CONTENT>
+                <p class="text">當開發階段需要使用到套件包含的的功能，通常就是要將套件中的組件加入參考，但如果套件是使用zip格式進行封裝，並沒有辦法可以有效的使用，只有將全部套件內容放置於約定共用目錄中，才可以讓開發階段參考使用，這樣的作法其實在開發階段會引起不少的副作用。</p>
+                <p class="text">架構開發的過程中，意識到其實.NET Core中有很多功能或做法都是依賴著NuGet套件，如果用來佈署的套件格式也使用這種格式，其實就直接解決了開發階段的問題，而額外需要做的只是架設一個私有的NuGet Server。</p>
+                <p class="subtitle">實作方式</p>
+                <p class="text">為了可以在開發階段進行參考，因此格式與內容基本上與NuGet套件是一致的，不一樣的部分是加入了一個名為"platform"的目錄，並在這個目錄中加入了一個名為app.manifest的檔案，這個檔案紀錄了此套件載入時的相關資訊。</p>
+                <p class="text">原本的套件來源是應用程式中的Packages目錄，系統啟動時會使用這個目錄中的.nupkg進行載入作業，但後來在內部專案開發時想到，如果可以直接指定使用NuGet Server的套件作為來源，這樣在測試上或是發布新版本給客戶端應該可以做一些控制或稽核的流程，因此就將這種載入的方式也加入到實作中。</p>
     </CONTENT>
 </PAGE>
