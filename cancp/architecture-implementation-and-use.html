@@ -43,7 +43,7 @@
             </div>
         </div>
         <div id="bottom">
-            <div id="latestupdate">最後更新時間: 2024/12/16 13:34:10</div>
+            <div id="latestupdate">最後更新時間: 2024/12/16 14:15:10</div>
             <div id="nav">
                 <a class="main link" href="../index.html"><i class="fa-regular fa-user"></i> 關於我</a>
                 <div class="main"><i class="fa-regular fa-bookmark"></i> 企業資訊系統開發</div>
@@ -54,6 +54,7 @@
                 <a class="sub link" href="think-and-try.html#article"><i class="fa-solid fa-caret-right"></i> 構思與初步驗證</a>
                 <a class="sub link" href="use-nuget-package-format.html#article"><i class="fa-solid fa-caret-right"></i> 使用NuGet套件作為佈署格式</a>
                 <a class="sub link" href="architecture-implementation-and-use.html#article"><i class="fa-solid fa-caret-right"></i> 架構實作與使用</a>
+                <a style="display:none;" class="sub link" href="scenario-and-case.html#article"><i class="fa-solid fa-caret-right"></i> 應用情境案例</a>
             </div>
         </div>
     </div>
@@ -78,7 +79,7 @@
                     <li><b>參考的組件</b> - 由建置過程中的MSBuild的"ReferencesCopiedInThisBuild"變數取得參考檔案</li>
                 </ul>
                 <p class="text">建置專案本身就是透過MSBuild來處理，而且在NuGet套件中就有支援加入MSBuild相關作業，參考到套件的專案自然就會加入額外的建置步驟。</p>
-                <p class="text">因此開發一個名為CITUO.AspNetCore.Platform.VS.Sdk的NuGet套件用來處理建置過程中的動作，：</p>
+                <p class="text">因此開發一個名為CITUO.AspNetCore.Platform.VS.Sdk的NuGet套件用來處理建置過程中的動作：</p>
                 <ul class="text">
                     <li><b>產生定義檔(app.package)</b> - 建置過程中依據專案定義檔資訊產生佈署定義檔</li>
                     <li><b>複製參考組件</b> - 由"ReferencesCopiedInThisBuild"變數取得參考檔案，並視需要複製到套件中</li>
