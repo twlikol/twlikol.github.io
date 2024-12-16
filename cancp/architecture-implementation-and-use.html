@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="language" content="tw" />
+    <meta property="og:site_name" content="Likol Lee" />
+    <meta property="og:type" content="article" />
+    <link rel="stylesheet" href="ref.css" />
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-F5Q6MWC1HT"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-F5Q6MWC1HT');
+    </script>
+    <title>架構實作與使用 - Likol Lee</title>
+    <meta property="og:title" content="架構實作與使用 - Likol Lee" />
+    <meta name="description" content="除了架構本身的程式開發，開發人員在開發階段的配套措施也是相當重要。" />
+    <meta property="og:description" content="除了架構本身的程式開發，開發人員在開發階段的配套措施也是相當重要。" />
+    <meta property="og:url" content="https://twlikol.github.io/cancp/architecture-implementation-and-use.html" />
+    
+        <meta name="keywords" content="Implementation, CANCP, likollee, Likol Lee, 企業資訊系統開發, 系統開發技術, C#, .NET, ASP.NET CORE" />
+        <meta property="og:image" content="https://twlikol.github.io/imgs/projects/architecture-implementation-and-use-1.jpg" />
+        <meta property="og:image:alt" content="Visual Studio專案範本" />
+    
+</head>
+<body>
+    <a id="top"></a>
+    <div id="left">
+        <div id="top">
+            <div id="about">
+                <div id="avatars">
+                    <div id="avatar">
+                        <img src="../imgs/avatar.jpg" alt="Likol Lee">
+                    </div>
+                </div>
+                <div id="name">Likol Lee</div>
+                <div id="email"><a href="mailto:twlikol@msn.com">twlikol@msn.com</a></div>
+            </div>
+        </div>
+        <div id="bottom">
+            <div id="latestupdate">最後更新時間: 2024/12/16 13:34:10</div>
+            <div id="nav">
+                <a class="main link" href="../index.html"><i class="fa-regular fa-user"></i> 關於我</a>
+                <div class="main"><i class="fa-regular fa-bookmark"></i> 企業資訊系統開發</div>
+                <a class="sub link" href="../projects/modbus-collector-ui.html#article"><i class="fa-solid fa-caret-right"></i> 機台加工數據收集與儀表板</a>
+                <a class="sub link" href="../projects/process-register-station.html#article"><i class="fa-solid fa-caret-right"></i> 加工作業登錄工作站</a>
+                <div class="main"><i class="fa-solid fa-layer-group"></i> CANCP 基礎架構開發</div>
+                <a class="sub link" href="what-is-cancp.html#article"><i class="fa-solid fa-caret-right"></i> CANCP是什麼？</a>
+                <a class="sub link" href="think-and-try.html#article"><i class="fa-solid fa-caret-right"></i> 構思與初步驗證</a>
+                <a class="sub link" href="use-nuget-package-format.html#article"><i class="fa-solid fa-caret-right"></i> 使用NuGet套件作為佈署格式</a>
+                <a class="sub link" href="architecture-implementation-and-use.html#article"><i class="fa-solid fa-caret-right"></i> 架構實作與使用</a>
+            </div>
+        </div>
+    </div>
+    <div id="right">
+        <div id="frame">
+            <div id="content">
+                <a id="article"></a>
+                <p class="title">架構實作與使用</p>
+                <p class="description">除了架構本身的程式開發，開發人員在開發階段的配套措施也是相當重要。</p>
+                
+                <p class="text">一個好的系統開發方式，也要相應的提供開發人員容易使用的工具或方法，這樣才可以減少在處理非客戶需求的作業時間，自然就可以讓開發人員專注於需求開發本身。</p>
+                <p class="subtitle">Visual Studio專案範本</p>
+                <p class="image">
+                    <a target="_blank" href="../imgs/projects/architecture-implementation-and-use-1.jpg"><img src="../imgs/projects/architecture-implementation-and-use-1.jpg" /></a>
+                </p>
+                <p class="text">在實作與測試的開發過程中，建立了使用Visual Studio的ASP.NET Core (RazorPages)標準範本的專案來測試套件的產生，視需要修改專案定義檔(.csproj)的內容，包含了加入建置成套件時所需的預設參數，以及加入預設的參考。</p>
+                <p class="text">最後將上述的專案直接做成Visual Studio專案範本，這樣一來開發新的套件時，專案新增時即是一個可立即繼續開發的狀態，不需要進行任何的調整。</p>
+                <p class="subtitle">MSBuild</p>
+                <p class="text">由專案產生NuGet套件的作法，.NET Core專案本身就已經提供了這樣的功能，但是此架構需要將額外的檔案加入其中，因此需要針對這個程序進行調整。額外的檔案可能來自專案建置輸出本身或是參考的組件，也因此分為了以下兩個部分：</p>
+                <ul class="text">
+                    <li><b>專案建置輸出</b> - 在專案的定義檔中加入自訂的專案屬性紀錄需要加入那些檔案</li>
+                    <li><b>參考的組件</b> - 由建置過程中的MSBuild的"ReferencesCopiedInThisBuild"變數取得參考檔案</li>
+                </ul>
+                <p class="text">建置專案本身就是透過MSBuild來處理，而且在NuGet套件中就有支援加入MSBuild相關作業，參考到套件的專案自然就會加入額外的建置步驟。</p>
+                <p class="text">因此開發一個名為CITUO.AspNetCore.Platform.VS.Sdk的NuGet套件用來處理建置過程中的動作，：</p>
+                <ul class="text">
+                    <li><b>產生定義檔(app.package)</b> - 建置過程中依據專案定義檔資訊產生佈署定義檔</li>
+                    <li><b>複製參考組件</b> - 由"ReferencesCopiedInThisBuild"變數取得參考檔案，並視需要複製到套件中</li>
+                </ul>
+                <p class="subtitle">如何使用(Hosting)此架構</p>
+                <p class="image">
+                    <a target="_blank" href="../imgs/projects/architecture-implementation-and-use-2.jpg"><img src="../imgs/projects/architecture-implementation-and-use-2.jpg" /></a>
+                </p>
+                <p class="text">首先在需要使用這個架構的專案中，加入CITUO.AspNetCore.Platform這個套件的參考。</p>
+                <p class="image">
+                    <a target="_blank" href="../imgs/projects/architecture-implementation-and-use-3.jpg"><img src="../imgs/projects/architecture-implementation-and-use-3.jpg" /></a>
+                </p>
+                <p class="text">就如同ASP.NET Core的功能註冊方式，再透過DI的方式即可將此架構注入至現有的應用程式中。</p>
+    
+                <div id="gototop">
+                    <a href="#top">
+                        <i class="fa-regular fa-circle-up fa-xl"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

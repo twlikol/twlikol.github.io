@@ -3,7 +3,7 @@
     <METAS>
     <meta name="keywords" content="CANCP, likollee, Likol Lee, 企業資訊系統開發, 系統開發技術, C#, .NET, ASP.NET CORE" />
     <meta property="og:image" content="https://twlikol.github.io/imgs/projects/what-is-cancp-1.jpg" />
-    <meta property="og:image:alt" content="加工狀態儀表板" />
+    <meta property="og:image:alt" content="CANCP是什麼" />
     </METAS>
     <TITLE>CANCP是什麼？</TITLE>
     <DESCRIPTION>使用ASP.NET Core開發的網站基礎框架，全名為：CITUO ASP.NET Core Platform，是一個以載入NuGet套件(.nupkg)作為功能來源的架構。</DESCRIPTION>
@@ -68,5 +68,45 @@
                 <p class="subtitle">實作方式</p>
                 <p class="text">為了可以在開發階段進行參考，因此格式與內容基本上與NuGet套件是一致的，不一樣的部分是加入了一個名為"platform"的目錄，在建置過程中會將專案參考的相關組件，一起加入這個目錄中，並在這個目錄中加入了一個名為app.manifest的檔案，這個檔案就紀錄了此套件載入時的相關資訊。</p>
                 <p class="text">原本的套件來源是應用程式中的Packages目錄，系統啟動時會使用這個目錄中的.nupkg進行載入作業，但後來在內部專案開發時想到，如果可以直接指定使用NuGet Server的套件作為來源，這樣在測試上或是發布新版本給客戶端應該可以做一些控制或稽核的流程，因此就將這種載入的方式也加入到實作中。</p>
+    </CONTENT>
+</PAGE>
+<PAGE>
+    <FILENAME>architecture-implementation-and-use.html</FILENAME>
+    <METAS>
+        <meta name="keywords" content="Implementation, CANCP, likollee, Likol Lee, 企業資訊系統開發, 系統開發技術, C#, .NET, ASP.NET CORE" />
+        <meta property="og:image" content="https://twlikol.github.io/imgs/projects/architecture-implementation-and-use-1.jpg" />
+        <meta property="og:image:alt" content="Visual Studio專案範本" />
+    </METAS>
+    <TITLE>架構實作與使用</TITLE>
+    <DESCRIPTION>除了架構本身的程式開發，開發人員在開發階段的配套措施也是相當重要。</DESCRIPTION>
+    <CONTENT>
+                <p class="text">一個好的系統開發方式，也要相應的提供開發人員容易使用的工具或方法，這樣才可以減少在處理非客戶需求的作業時間，自然就可以讓開發人員專注於需求開發本身。</p>
+                <p class="subtitle">Visual Studio專案範本</p>
+                <p class="image">
+                    <IMAGE>~/imgs/projects/architecture-implementation-and-use-1.jpg</IMAGE>
+                </p>
+                <p class="text">在實作與測試的開發過程中，建立了使用Visual Studio的ASP.NET Core (RazorPages)標準範本的專案來測試套件的產生，視需要修改專案定義檔(.csproj)的內容，包含了加入建置成套件時所需的預設參數，以及加入預設的參考。</p>
+                <p class="text">最後將上述的專案直接做成Visual Studio專案範本，這樣一來開發新的套件時，專案新增時即是一個可立即繼續開發的狀態，不需要進行任何的調整。</p>
+                <p class="subtitle">MSBuild</p>
+                <p class="text">由專案產生NuGet套件的作法，.NET Core專案本身就已經提供了這樣的功能，但是此架構需要將額外的檔案加入其中，因此需要針對這個程序進行調整。額外的檔案可能來自專案建置輸出本身或是參考的組件，也因此分為了以下兩個部分：</p>
+                <ul class="text">
+                    <li><b>專案建置輸出</b> - 在專案的定義檔中加入自訂的專案屬性紀錄需要加入那些檔案</li>
+                    <li><b>參考的組件</b> - 由建置過程中的MSBuild的"ReferencesCopiedInThisBuild"變數取得參考檔案</li>
+                </ul>
+                <p class="text">建置專案本身就是透過MSBuild來處理，而且在NuGet套件中就有支援加入MSBuild相關作業，參考到套件的專案自然就會加入額外的建置步驟。</p>
+                <p class="text">因此開發一個名為CITUO.AspNetCore.Platform.VS.Sdk的NuGet套件用來處理建置過程中的動作，：</p>
+                <ul class="text">
+                    <li><b>產生定義檔(app.package)</b> - 建置過程中依據專案定義檔資訊產生佈署定義檔</li>
+                    <li><b>複製參考組件</b> - 由"ReferencesCopiedInThisBuild"變數取得參考檔案，並視需要複製到套件中</li>
+                </ul>
+                <p class="subtitle">如何使用(Hosting)此架構</p>
+                <p class="image">
+                    <IMAGE>~/imgs/projects/architecture-implementation-and-use-2.jpg</IMAGE>
+                </p>
+                <p class="text">首先在需要使用這個架構的專案中，加入CITUO.AspNetCore.Platform這個套件的參考。</p>
+                <p class="image">
+                    <IMAGE>~/imgs/projects/architecture-implementation-and-use-3.jpg</IMAGE>
+                </p>
+                <p class="text">就如同ASP.NET Core的功能註冊方式，再透過DI的方式即可將此架構注入至現有的應用程式中。</p>
     </CONTENT>
 </PAGE>
