@@ -43,7 +43,7 @@
             </div>
         </div>
         <div id="bottom">
-            <div id="latestupdate">最後更新時間: 2024-12-16 17:49:23</div>
+            <div id="latestupdate">最後更新時間: 2024-12-16 19:42:50</div>
             <div id="nav">
                 <a class="main link" href="../index.html"><i class="fa-regular fa-user"></i> 關於我</a>
                 <div class="main"><i class="fa-regular fa-bookmark"></i> 企業資訊系統開發</div>
@@ -81,9 +81,18 @@
                 <p class="text">建置專案本身就是透過MSBuild來處理，而且在NuGet套件中就有支援加入MSBuild相關作業，參考到套件的專案自然就會加入額外的建置步驟。</p>
                 <p class="text">因此開發一個名為CITUO.AspNetCore.Platform.VS.Sdk的NuGet套件用來處理建置過程中的動作：</p>
                 <ul class="text">
-                    <li><b>產生定義檔(app.package)</b> - 建置過程中依據專案定義檔資訊產生佈署定義檔</li>
+                    <li><b>產生定義檔(app.manifest)</b> - 建置過程中依據專案定義檔資訊產生佈署定義檔</li>
                     <li><b>複製參考組件</b> - 由"ReferencesCopiedInThisBuild"變數取得參考檔案，並視需要複製到套件中</li>
                 </ul>
+                <p class="subtitle">套件建置</p>
+                <p class="image">
+                    <a target="_blank" href="../imgs/projects/architecture-implementation-and-use-4.jpg"><img src="../imgs/projects/architecture-implementation-and-use-4.jpg" /></a>
+                </p>
+                <p class="text">專案建置後，會在bin目錄中產生NuGet套件檔案，修改附檔名為zip就可以看到專案輸出內容是放置於lib目錄中。</p>
+                <p class="image">
+                    <a target="_blank" href="../imgs/projects/architecture-implementation-and-use-5.jpg"><img src="../imgs/projects/architecture-implementation-and-use-5.jpg" /></a>
+                </p>
+                <p class="text">platform目錄就是透過修改NuGet套件生成步驟產生的，目錄中除了app.manifest檔案，references目錄中就是套件所需的其他參考組件。</p>
                 <p class="subtitle">如何使用(Hosting)此架構</p>
                 <p class="image">
                     <a target="_blank" href="../imgs/projects/architecture-implementation-and-use-2.jpg"><img src="../imgs/projects/architecture-implementation-and-use-2.jpg" /></a>
@@ -92,7 +101,7 @@
                 <p class="image">
                     <a target="_blank" href="../imgs/projects/architecture-implementation-and-use-3.jpg"><img src="../imgs/projects/architecture-implementation-and-use-3.jpg" /></a>
                 </p>
-                <p class="text">就如同ASP.NET Core的功能註冊方式，再透過DI的方式即可將此架構注入至現有的應用程式中。</p>
+                <p class="text">就如同ASP.NET Core的功能註冊方式，先透過DI的方式將此架構注入至現有的應用程式中，剩下的就是將已經開發好的套件放置於packages目錄中，這樣系統啟動時就會載入套件功能。</p>
     
                 <div id="gototop">
                     <a href="#top">
