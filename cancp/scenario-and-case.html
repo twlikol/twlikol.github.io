@@ -17,15 +17,15 @@
 
         gtag('config', 'G-F5Q6MWC1HT');
     </script>
-    <title>應用案例與情境 - Likol Lee</title>
-    <meta property="og:title" content="應用案例與情境 - Likol Lee" />
-    <meta name="description" content="功能套件化的好處除了重複性功能可重複利用外，另外也可以讓在系統佈署時有更多的選擇性與彈性" />
-    <meta property="og:description" content="功能套件化的好處除了重複性功能可重複利用外，另外也可以讓在系統佈署時有更多的選擇性與彈性" />
+    <title>應用情境與案例 - Likol Lee</title>
+    <meta property="og:title" content="應用情境與案例 - Likol Lee" />
+    <meta name="description" content="功能套件化本質上就可以達到一定的重複利用性，但是再搭配使用NuGet套件的格式，除了可以更容易在開發階段共用，也可以讓在系統佈署時有更多的選擇性與彈性。" />
+    <meta property="og:description" content="功能套件化本質上就可以達到一定的重複利用性，但是再搭配使用NuGet套件的格式，除了可以更容易在開發階段共用，也可以讓在系統佈署時有更多的選擇性與彈性。" />
     <meta property="og:url" content="https://twlikol.github.io/cancp/scenario-and-case.html" />
     
-        <meta name="keywords" content="Implementation, CANCP, likollee, Likol Lee, 企業資訊系統開發, 系統開發技術, C#, .NET, ASP.NET CORE" />
-        <meta property="og:image" content="" />
-        <meta property="og:image:alt" content="" />
+        <meta name="keywords" content="情境, 案例, CANCP, likollee, Likol Lee, 企業資訊系統開發, 系統開發技術, C#, .NET, ASP.NET CORE" />
+        <meta property="og:image" content="https://twlikol.github.io/imgs/projects/scenario-and-case-1.jpg" />
+        <meta property="og:image:alt" content="已開發套件" />
     
 </head>
 <body>
@@ -43,7 +43,7 @@
             </div>
         </div>
         <div id="bottom">
-            <div id="latestupdate">最後更新時間: 2024/12/16 14:15:10</div>
+            <div id="latestupdate">最後更新時間: 2024-12-16 17:49:23</div>
             <div id="nav">
                 <a class="main link" href="../index.html"><i class="fa-regular fa-user"></i> 關於我</a>
                 <div class="main"><i class="fa-regular fa-bookmark"></i> 企業資訊系統開發</div>
@@ -54,7 +54,7 @@
                 <a class="sub link" href="think-and-try.html#article"><i class="fa-solid fa-caret-right"></i> 構思與初步驗證</a>
                 <a class="sub link" href="use-nuget-package-format.html#article"><i class="fa-solid fa-caret-right"></i> 使用NuGet套件作為佈署格式</a>
                 <a class="sub link" href="architecture-implementation-and-use.html#article"><i class="fa-solid fa-caret-right"></i> 架構實作與使用</a>
-                <a style="display:none;" class="sub link" href="scenario-and-case.html#article"><i class="fa-solid fa-caret-right"></i> 應用情境案例</a>
+                <a class="sub link" href="scenario-and-case.html#article"><i class="fa-solid fa-caret-right"></i> 應用情境與案例</a>
             </div>
         </div>
     </div>
@@ -62,25 +62,34 @@
         <div id="frame">
             <div id="content">
                 <a id="article"></a>
-                <p class="title">應用案例與情境</p>
-                <p class="description">功能套件化的好處除了重複性功能可重複利用外，另外也可以讓在系統佈署時有更多的選擇性與彈性</p>
+                <p class="title">應用情境與案例</p>
+                <p class="description">功能套件化本質上就可以達到一定的重複利用性，但是再搭配使用NuGet套件的格式，除了可以更容易在開發階段共用，也可以讓在系統佈署時有更多的選擇性與彈性。</p>
                 
                 <p class="subtitle">共用功能套件</p>
-                <p class="text">可共用的功能寫成套件化 Email sender, Excel read and write, Assembly</p>
-                <p class="subtitle">更彈性的佈署</p>
-                <p class="text">由於佈署方式是使用套件進行，在準備佈署時只需要知道</p>
-                <p class="subtitle">Web API</p>
-                <p class="text">透過API套件化，伺服器可佈署任意組合的API集合</p>
-                <p class="subtitle">Docker</p>
-                <p class="text">不需要重複打包不同系統的容器，只要建置一個加載此架構的基本容器，在建立容器時指定遠端的套件來源即可完成。</p>
-                <p class="subtitle">開發與維運情境</p>
+                <p class="text">將共用的功能寫成套件化，可以在開發階段取代使用DLL參考的做法，直接由NuGet加入參考，常見的就是將一些共用功能(例如：發送電子郵件、讀取或寫入Excel檔案...)寫成套件，然後其他專案在開發時再引用進專案使用。而在佈署時只要將套件的檔案一起佈署到目錄即可。</p>
+                <p class="subtitle">容器化(Docker)</p>
+                <p class="text">不需要重複打包不同系統的容器，只要建置一個加載此架構的基本容器，在建立容器時指定遠端的套件來源，這樣當容器啟動後，自動就會根據套件來源進行載入功能的作業。</p>
+                <p class="subtitle">開發與維運</p>
                 <p class="text">架設兩台私有的NuGet Server(一台為測試區、一台為正式區)，另外建立一個空的網站並讓此網站使用套件化佈署架構，並將其套件來源設定為由遠端(正式區)取得，作為系統正式環境使用：</p>
                 <ol class="text">
                     <li>開發人員將完成的功能發佈至測試區</li>
                     <li>測試人員測試完成後，認為已經可達到正式釋出的要求，由測試區再發佈至正式區</li>
-                    <li>維運人員安排更新時程，待時間到重新啟動服務，即可完成更新</li>
+                    <li>維運人員安排更新時程，待重新啟動服務後，系統會自動由正式區的NuGet Server中載入套件，即可完成更新</li>
                 </ol>
-                <p class="text"></p>
+                <p class="subtitle">實際運用</p>
+                <div class="images">
+                    <div class="col col50">
+                        <div>
+                            <a target="_blank" href="../imgs/projects/scenario-and-case-1.jpg"><img src="../imgs/projects/scenario-and-case-1.jpg" /></a>
+                        </div>
+                    </div>
+                    <div class="col col50">
+                        <div>
+                            <a target="_blank" href="../imgs/projects/scenario-and-case-2.jpg"><img src="../imgs/projects/scenario-and-case-2.jpg" /></a>
+                        </div>
+                    </div>
+                </div>
+                <p class="text">運用這個架構，開發了如上圖的共用套件，根據專案在開發上的需求進行參考並佈署，一開始就可以讓專案進入需求開發，不須將時間花在基礎功能上。</p>
     
                 <div id="gototop">
                     <a href="#top">

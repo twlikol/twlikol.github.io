@@ -95,6 +95,7 @@ a:hover {
                     width: 100%;
                     display: block;
                     border-radius: 8px;
+                    
                 }
 
             #right > #frame > #content > .images {
@@ -116,11 +117,13 @@ a:hover {
                 #right > #frame > #content > .images > .col33 {
                     width: 33%;
                     display: inline-block;
+                    vertical-align: top;
                 }
 
                 #right > #frame > #content > .images > .col50 {
                     width: 50%;
                     display: inline-block;
+                    vertical-align: top;
                 }
                     
             
