@@ -103,3 +103,40 @@
                 <p class="text">每一項作業的內容對應至後端網站的特定網址，使用者在操作時使用Javascript進行畫面控制，當需要進行資料輸入時，會使用Javascript與WebView2進行溝通，藉以啟動於WPF開發的資料輸入功能。</p>
     </CONTENT>
 </PAGE>
+<PAGE>
+    <FILENAME>processing-plant.html</FILENAME>
+    <METAS>
+        <meta name="keywords" content="CNC加工, 圖面管理, likollee, Likol Lee, 企業資訊系統開發, 系統開發技術, CANCP, C#, .NET, ASP.NET CORE" />
+        <meta property="og:image" content="https://twlikol.github.io/imgs/projects/processing-plant-1.jpg" />
+        <meta property="og:image:alt" content="加工作業登錄工作站" />
+    </METAS>
+    <TITLE>CNC加工圖面管理</TITLE>
+    <DESCRIPTION>小型CNC加工廠圖面管理應用程式，除了建立加工圖面基本資料與上傳圖面圖片外，還可以設定圖面加工的工具資料與相應的加工程式碼。</DESCRIPTION>
+    <CONTENT>
+                <p class="image">
+                    <IMAGE>~/imgs/projects/processing-plant-1.jpg</IMAGE>
+                </p>
+                <p class="text">主畫面顯示基本統計資訊與近期上傳的圖面圖片，下方並有近期成品出貨與素材採購紀錄。</p>
+                <p class="image">
+                    <IMAGE>~/imgs/projects/processing-plant-2.jpg</IMAGE>
+                </p>
+                <p class="text">為了使圖面搜尋可以更彈性，並容納更多資訊將圖面搜尋獨立為單一功能，使用者可以自行根據需要的篩選條件進行設定。</p>
+                <p class="image">
+                    <IMAGE>~/imgs/projects/processing-plant-3.jpg</IMAGE>
+                </p>
+                <p class="text">增加了一個單一圖面的完整檢視頁面，可快速的了解圖面的完整紀錄。</p>
+                <p class="image">
+                    <IMAGE>~/imgs/projects/processing-plant-7.jpg</IMAGE>
+                </p>
+                <p class="text">圖面的新增也有提供可以一次將相關資料新增的頁面。</p>
+                <p class="image">
+                    <IMAGE>~/imgs/projects/processing-plant-6.jpg</IMAGE>
+                </p>
+                <p class="text">圖面的加工程式檢視，左側部分會將較特別的指令列出，使用者可以更快速的了解加工程式內容。</p>
+                <p class="subtitle">系統架構</p>
+                <p class="text">這是個用WPF裝載ASP.NET Core網站的應用程式，程式啟動時會裝載ASP.NET Core網站並啟動，使用者介面透過WebView2顯示裝載網站的頁面。</p>
+                <p class="text">由於希望可以適用於較小的組織，因此資料庫除了可使用SQL Server也可以用Sqlite。基礎架構使用CANCP進行功能載入，切換可直接透過使用不同資料庫套件即可。</p>
+                <p class="subtitle">實作的選擇</p>
+                <p class="text">最初的規劃是可以直接將圖面程式，透過網路連線方式直接傳到機台上，因此採用WPF來進行裝載，而且整體所使用的技術都採用微軟的，也可以較快上手。</p>
+    </CONTENT>
+</PAGE>
