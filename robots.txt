@@ -1,1 +1,4 @@
 Sitemap: https://twlikol.github.io/sitemap.xml
+
+User-agent: *
+Allow: /sitemap.xml
