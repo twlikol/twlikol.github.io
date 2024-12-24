@@ -1,4 +1,4 @@
-Sitemap: https://twlikol.github.io/sitemap.xml
-
 User-agent: *
-Allow: /sitemap.xml
+Allow: /
+Sitemap: https://twlikol.github.io/sitemap.xml
+Disallow: /*.pages.html$
