@@ -1,4 +1,6 @@
+# User-agent: *
+# Allow: /
+# Sitemap: https://twlikol.github.io/sitemap.xml
+# Disallow: /*.pages.html$
 User-agent: *
-Allow: /
-Sitemap: https://twlikol.github.io/sitemap.xml
-Disallow: /*.pages.html$
+Disallow:
