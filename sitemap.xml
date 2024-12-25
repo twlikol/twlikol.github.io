@@ -6,16 +6,6 @@
   xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
   http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
     <url>
-        <loc>https://twlikol.github.io/</loc>
-        <changefreq>Weekly</changefreq>
-        <priority>0.8</priority>
-    </url>
-    <url>
-        <loc>https://twlikol.github.io/index.html</loc>
-        <changefreq>Weekly</changefreq>
-        <priority>0.8</priority>
-    </url>
-    <url>
         <loc>https://twlikol.github.io/projects/modbus-collector-ui.html</loc>
         <changefreq>Weekly</changefreq>
         <priority>0.8</priority>
